@@ -65,6 +65,18 @@ function App() {
     setPlaces([newItem,...places])
   }
 
+  function updateItem(updatedItem) {
+    const newPlaces = places.map(place => {
+      if (updatedItem.id === place.id){
+          return updatedItem
+      } else {
+          return place
+      }
+    })
+
+    setPlaces(newPlaces)
+  }
+
   function handleDelete(id) {
     fetch(`http://localhost:3001/places/${id}`, {
       method: "DELETE",
@@ -79,23 +91,6 @@ function App() {
       setPlaces(updatedPlaces)
     })
   }
-  const updatePlace = (updatedPlace) => {
-
-
-    const newPlaces = places.map(place => {
-        if(updatedPlace.id === place.id){
-            return updatedPlace
-        } else {
-            return place
-        }
-    })
-
-    setPlaces(newPlaces)
-}
-
-  
-
-
 
   return (
     <div className="App">
@@ -109,9 +104,9 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<Signup loginUser = { loginUser } loggedIn={ loggedIn } />} />
         <Route path="/login" element={<Login loginUser={ loginUser } loggedIn={ loggedIn }/>} />
-        <Route path="/places" element={<PlacesList loggedIn={ loggedIn } places={ places } addItem={addItem} handleDelete={handleDelete} updatePlace={updatePlace} />} />
+        <Route path="/places" element={<PlacesList loggedIn={ loggedIn } places={ places } addItem={addItem} handleDelete={handleDelete} />} />
         <Route path="/places/:id" element={<Place loggedIn={ loggedIn } places={ places } />} />
-        <Route exact path="/places/:id/edit" element={<PlaceForm places={places} addItem={addItem} />} />
+        <Route exact path="/places/:id/edit" element={<PlaceForm places={places} addItem={addItem} updateItem={updateItem} />} />
       </Routes>
       
       </Router>

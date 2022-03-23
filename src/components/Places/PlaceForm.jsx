@@ -5,7 +5,7 @@ import {Button, Form, Container} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { useParams } from 'react-router-dom'
 
-const PlaceForm = ({addItem, places}) => {
+const PlaceForm = ({addItem, places, updateItem}) => {
     const params = useParams()
     
 
@@ -37,15 +37,13 @@ const PlaceForm = ({addItem, places}) => {
         [e.target.name]: e.target.value})
     }
 
-    function handleSubmit(e) {
-        e.preventDefault()
+    function createPlace() {
         const headers = {
             "Accept": "application/json",
             "Content-Type": "application/json",
             "Authorization": `Bearer ${ localStorage.getItem('jwt') }`
           }
-        console.log('headers', headers)
-        fetch("http://localhost:3001/places",{
+        fetch(`http://localhost:3001/places`,{
             method: "POST",
             headers,
             body: JSON.stringify(formData),
@@ -55,7 +53,34 @@ const PlaceForm = ({addItem, places}) => {
             addItem(newItem)
             setFormData(initialState)
         })
+    }
 
+    function updatePlace(id) {
+        const headers = {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${ localStorage.getItem('jwt') }`
+          }
+        fetch(`http://localhost:3001/places/${id}`,{
+            method: "PATCH",
+            headers,
+            body: JSON.stringify(formData),
+        })
+        .then(r=>r.json())
+        .then((updatedItem) => {
+            updateItem(updatedItem)
+            setFormData(initialState)
+        })
+
+    }
+
+    function handleSubmit(e) {
+        e.preventDefault()
+        if (!formData.id) {
+            createPlace()
+        } else {
+            updatePlace(formData.id)
+        }
     }
 
 
