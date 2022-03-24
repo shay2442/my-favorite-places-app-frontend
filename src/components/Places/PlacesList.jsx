@@ -20,13 +20,13 @@ const PlacesList = ({loggedIn, places, addItem, handleDelete, updatePlace}) => {
 
     
     // for every place we have we are going to create a place card
-    const placeCards = places.map(place => <PlaceCard key={place.id } place={place} handleDelete={handleDelete} updatePlace={updatePlace}/>)
+    console.log(places)
+    const placeCards = places?.map(place => <PlaceCard key={place.id } place={place} handleDelete={handleDelete} updatePlace={updatePlace}/>)
 
     return (
 
         <div>
-            <h1>Places</h1>
-            <PlaceForm addItem={addItem}/>
+            {/* <PlaceForm addItem={addItem}/> */}
             { placeCards } 
             
         </div>

@@ -2,11 +2,13 @@ import React, { useEffect, useState } from  'react';
 import { baseUrl, headers } from '../../Globals';
 import { useNavigate } from 'react-router-dom';
 
+
 const Signup = ({ loginUser, loggedIn }) => {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
+    const [error, setError] = useState('')
 
     useEffect(() => {
         if( loggedIn ) {
@@ -30,18 +32,33 @@ const Signup = ({ loginUser, loggedIn }) => {
             headers,
             body: JSON.stringify(strongParams)
         })
+        // .then(checkStatus)
         .then(r => r.json())
         .then(data => {
             loginUser(data.user);
-            localStorage.setItem('jwt', data.token)
+            if (data.token) {
+                localStorage.setItem('jwt', data.token)
+            }
             navigate('/places')
         })
+        .catch(err => {
+          
+            console.log(err)
+            // setError(error)
+        })
     }
-
+    // const checkStatus = (response) => {
+    //     if (response.status >= 200 && response.status < 300) {
+    //       return Promise.resolve(response)
+    //     } else {
+    //       return Promise.reject(new Error(response.err))
+    //     }
+    //   }
     return (
 
         <div>
             <h2>Create Account</h2>
+            <p>{error}</p>
             <form onSubmit= { handleSubmit }>
                 <div>
                 <label>Username: </label>

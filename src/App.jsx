@@ -1,7 +1,7 @@
 
 // import './App.css';
 import { useState, useEffect } from 'react'
-import Navbar from './components/Navigation/Navbar'
+import Navigation from './components/Navigation/Navigation'
 import Home from './components/static/Home'
 import Signup from './components/Authentication/Signup'
 import Login from './components/Authentication/Login'
@@ -94,12 +94,12 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
+      {/* <header className="App-header">
         My Favorite Places App
-      </header>
+      </header> */}
       <Router>
-        { loggedIn ? <h1>Welcome, {currentUser.username}! </h1> : null }
-      <Navbar loggedIn={loggedIn} logoutUser={logoutUser} currentUser={ currentUser } />
+        {/* { loggedIn ? <h1>Welcome, {currentUser.username}! </h1> : null } */}
+      <Navigation loggedIn={loggedIn} logoutUser={logoutUser} currentUser={ currentUser } />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<Signup loginUser = { loginUser } loggedIn={ loggedIn } />} />
@@ -107,6 +107,7 @@ function App() {
         <Route path="/places" element={<PlacesList loggedIn={ loggedIn } places={ places } addItem={addItem} handleDelete={handleDelete} />} />
         <Route path="/places/:id" element={<Place loggedIn={ loggedIn } places={ places } />} />
         <Route exact path="/places/:id/edit" element={<PlaceForm places={places} addItem={addItem} updateItem={updateItem} />} />
+        <Route exact path="/places/:id/new" element={<PlaceForm places={places} addItem={addItem} updateItem={updateItem} />} />
       </Routes>
       
       </Router>

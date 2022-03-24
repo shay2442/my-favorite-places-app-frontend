@@ -88,7 +88,7 @@ const PlaceForm = ({addItem, places, updateItem}) => {
 
     return(
         <div>
-              <Form onSubmit={handleSubmit}className="form">
+             <form onSubmit={handleSubmit}className="form">
             <label>
                 Image:
                 <input
@@ -121,16 +121,16 @@ const PlaceForm = ({addItem, places, updateItem}) => {
             <label>
                 Price:
                 <select
-            name="price"
-            value={formData.price}
+            name="category"
+            value={formData.category}
             onChange={handleChange}
             >
-                <option value='all'>Price</option>
                 <option value='$'>$</option>
                 <option value='$$'>$$</option>
                 <option value='$$$'>$$$</option>
+                
                     </select></label>
-                    <label>
+            <label>
                 Category:
                 <input
                 type="text"
@@ -148,11 +148,10 @@ const PlaceForm = ({addItem, places, updateItem}) => {
                 onChange={handleChange}
                 ></input>
             </label>
-            <input type="submit" value={formData.id ? "Update" : "Create"}/>
+           
 
-
-            {/* <button className='submit-bttn' type="submit">Add Place</button> */}
-        </Form>
+            <button className='submit-bttn' type="submit">Add Place</button>
+        </form>
         </div>
     )
 }
