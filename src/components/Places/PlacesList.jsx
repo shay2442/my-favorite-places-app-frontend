@@ -1,39 +1,54 @@
-import { useEffect} from 'react'
-import { useNavigate } from 'react-router-dom'
-import PlaceCard from './PlaceCard'
-import PlaceForm from './PlaceForm'
-import {Router,
-    Routes,
-    Route
-  } from "react-router-dom";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import PlaceCard from "./PlaceCard";
+import Search from "../Search";
 
+// import PlaceForm from './PlaceForm'
+// import {Router,
+//     Routes,
+//     Route
+//   } from "react-router-dom";
 
-const PlacesList = ({loggedIn, places, addItem, handleDelete, updatePlace}) => {
-    const navigate = useNavigate();
+const PlacesList = ({
+  loggedIn,
+  places,
+  search,
+  handleSearch,
+  handleDelete,
+  updatePlace,
+}) => {
+  const navigate = useNavigate();
 
-    useEffect(() => {
-        if( !loggedIn ) {
-            navigate('/login')
-        }
-    }, [loggedIn])
+  useEffect(() => {
+    if (!loggedIn) {
+      navigate("/login");
+    }
+  }, [loggedIn]);
 
+  let placesToDisplay = places.filter((place) => {
+    return place.name.toLowerCase().includes(search.toLowerCase());
+  });
 
-    
-    // for every place we have we are going to create a place card
-    console.log(places)
-    const placeCards = places?.map(place => <PlaceCard key={place.id } place={place} handleDelete={handleDelete} updatePlace={updatePlace}/>)
+  // for every place we have we are going to create a place card
+  console.log(places);
+  const placeCards = placesToDisplay.map((place) => (
+    <PlaceCard
+      key={place.id}
+      place={place}
+      handleDelete={handleDelete}
+      updatePlace={updatePlace}
+    />
+  ));
 
-    return (
-
-        <div>
-            {/* <PlaceForm addItem={addItem}/> */}
-            { placeCards } 
-            
-        </div>
-
-        
-    )
-}
-
+  return (
+    <div className="orders-page">
+      <Search onSearch={handleSearch} search={search} />
+      <div className="card-container">
+        {/* <PlaceForm addItem={addItem}/> */}
+        {placeCards}
+      </div>
+    </div>
+  );
+};
 
 export default PlacesList;

@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import {Link } from 'react-router-dom'
 import {headers, getToken} from '../../Globals'
+import styled from 'styled-components'
 
 const PlaceCard = ({ place, handleDelete, updatePlace }) => {
     const navigate = useNavigate()
@@ -31,22 +32,30 @@ const PlaceCard = ({ place, handleDelete, updatePlace }) => {
     
 
     return(
-        <div>
-            <img src={ place.image } alt="place image" height="200" width="250"/>
+        <RecipeWrapper>
+        <div className="card">
+        <img className='image' src={place.image} alt="No Pic"/>
             <div> Name:{place.name}</div>
             <button onClick={ () => navigate(`/places/${place.id}`)}>View Notes</button>
+            <button onClick={ () => navigate(`/places/${place.id}/edit`)}>Edit</button>
             {/* <div> Address:{place.address}</div>
             <div> Price:{place.price}</div>
             <div> Category:{place.category}</div>
             <div> Notes:{place.notes}</div> */} 
             <button onClick={() => handleDelete(id)}>🗑 Delete Place</button>
-            <div>
-            <Link to={`/places/${id}/edit`}><button>Edit</button></Link>
-            </div>
+            {/* <Link to={`/places/${id}/edit`}><button>Edit</button></Link> */}
+    
         </div>
+        </RecipeWrapper>
 
 
     )
 }
 
 export default PlaceCard;
+const RecipeWrapper = styled.div `
+ width: 200px;
+    margin: 10px;
+    padding: 25px;
+    box-shadow:  0 0 20px rgba(0, 0, 0, 1.0), 0 0 40px rgba(0, 0, 0, 0.12);
+    border-radius: 5px;`

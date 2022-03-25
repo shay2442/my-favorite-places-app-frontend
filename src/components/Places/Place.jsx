@@ -16,11 +16,12 @@ const Place = ({places}) => {
 
     return(
         <div>
-            <img src={ place.image } alt="place picture"/>
-            <div> Address:{place.address}</div>
-            <div> Price:{place.price}</div>
-            <div> Category:{place.category}</div>
-            <div> Notes:{place.notes}</div>
+            <img src={ place.image } alt="place picture" height="300" width="350"  />
+            <h1>{ place.name }</h1>
+            <h3> Address: {place.address}</h3>
+            <h3> Price: {place.price}</h3>
+            <h3> Category: {place.category}</h3>
+            <h3> Notes: {place.notes}</h3>
 
 
         </div>

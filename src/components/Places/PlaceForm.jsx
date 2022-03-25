@@ -3,7 +3,9 @@ import {useState, useEffect} from 'react'
 import { baseUrl, headers, getToken } from '../../Globals'
 import {Button, Form, Container} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
+
+
 
 const PlaceForm = ({addItem, places, updateItem}) => {
     const params = useParams()
@@ -18,6 +20,8 @@ const PlaceForm = ({addItem, places, updateItem}) => {
         notes: ''
 
     }
+
+    const navigate = useNavigate();
 
     const [formData, setFormData]= useState(initialState)
 
@@ -51,8 +55,8 @@ const PlaceForm = ({addItem, places, updateItem}) => {
         .then(r=>r.json())
         .then((newItem) => {
             addItem(newItem)
-            setFormData(initialState)
-        })
+            setFormData(initialState)})
+                navigate('/places')
     }
 
     function updatePlace(id) {
@@ -87,11 +91,11 @@ const PlaceForm = ({addItem, places, updateItem}) => {
 
 
     return(
-        <div>
+        <div className='form'>
              <form onSubmit={handleSubmit}className="form">
             <label>
                 Image:
-                <input
+                <input className='input'
                 type="text"
                 name="image"
                 value={formData.image}
@@ -101,7 +105,7 @@ const PlaceForm = ({addItem, places, updateItem}) => {
 
             <label>
                 Name:
-                <input
+                <input className='input'
                 type="text"
                 name="name"
                 value={formData.name}
@@ -111,7 +115,7 @@ const PlaceForm = ({addItem, places, updateItem}) => {
 
             <label>
                 Address:
-                <input
+                <input className='input'
                 type="text"
                 name="address"
                 value={formData.address}
@@ -128,11 +132,10 @@ const PlaceForm = ({addItem, places, updateItem}) => {
                 <option value='$'>$</option>
                 <option value='$$'>$$</option>
                 <option value='$$$'>$$$</option>
-                
                     </select></label>
             <label>
                 Category:
-                <input
+                <input className='input'
                 type="text"
                 name="category"
                 value={formData.category}
@@ -141,7 +144,7 @@ const PlaceForm = ({addItem, places, updateItem}) => {
             </label>
             <label>
                 Notes:
-                <input
+                <input className='input'
                 type="text"
                 name="notes"
                 value={formData.notes}

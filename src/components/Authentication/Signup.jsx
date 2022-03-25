@@ -3,6 +3,7 @@ import { baseUrl, headers } from '../../Globals';
 import { useNavigate } from 'react-router-dom';
 
 
+
 const Signup = ({ loginUser, loggedIn }) => {
 
     const [username, setUsername] = useState('');
@@ -42,7 +43,7 @@ const Signup = ({ loginUser, loggedIn }) => {
             navigate('/places')
         })
         .catch(err => {
-          
+        //   debugger
             console.log(err)
             // setError(error)
         })
@@ -67,7 +68,7 @@ const Signup = ({ loginUser, loggedIn }) => {
                 <label>Password: </label>
                 <input type="password" name="password" id="password" value={ password } onChange={ e => setPassword(e.target.value) } /></div>
 
-                <input type="submit" value="Create Account" />
+                <button class="btn btn-default" type="submit" value="Create Account">Create Account</button>
 
             </form>
         </div>

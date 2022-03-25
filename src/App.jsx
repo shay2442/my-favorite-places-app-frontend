@@ -1,5 +1,5 @@
 
-// import './App.css';
+import './App.css';
 import { useState, useEffect } from 'react'
 import Navigation from './components/Navigation/Navigation'
 import Home from './components/static/Home'
@@ -11,14 +11,18 @@ import Place from './components/Places/Place'
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import { baseUrl, headers, getToken } from './Globals'
 import { useNavigate } from 'react-router-dom'
-import Button from 'react-bootstrap/Button'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 function App() {
   const [currentUser, setCurrentUser] = useState({})
   const [loggedIn, setLoggedIn] = useState(false)
   const [places, setPlaces] = useState([])
+  const [search, setSearch] = useState('')
   const navigate = useNavigate 
+
+  function handleSearch(newSearch) {
+    setSearch(newSearch)
+  }
 
   const loginUser = user => {
     setCurrentUser(user);
@@ -92,8 +96,11 @@ function App() {
     })
   }
 
+
   return (
-    <div className="App">
+    
+    <div  >
+
       {/* <header className="App-header">
         My Favorite Places App
       </header> */}
@@ -104,13 +111,14 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<Signup loginUser = { loginUser } loggedIn={ loggedIn } />} />
         <Route path="/login" element={<Login loginUser={ loginUser } loggedIn={ loggedIn }/>} />
-        <Route path="/places" element={<PlacesList loggedIn={ loggedIn } places={ places } addItem={addItem} handleDelete={handleDelete} />} />
+        <Route path="/places" element={<PlacesList loggedIn={ loggedIn } places={ places } addItem={addItem} handleDelete={handleDelete} search={search} handleSearch={handleSearch} />} />
         <Route path="/places/:id" element={<Place loggedIn={ loggedIn } places={ places } />} />
         <Route exact path="/places/:id/edit" element={<PlaceForm places={places} addItem={addItem} updateItem={updateItem} />} />
-        <Route exact path="/places/:id/new" element={<PlaceForm places={places} addItem={addItem} updateItem={updateItem} />} />
+        <Route exact path="/places/new" element={<PlaceForm places={places} addItem={addItem} updateItem={updateItem} />} />
       </Routes>
       
       </Router>
+      
     </div>
   );
 }
