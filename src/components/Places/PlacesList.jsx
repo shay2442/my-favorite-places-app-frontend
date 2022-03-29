@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import PlaceCard from "./PlaceCard";
 import Search from "../Search";
+import Typography from '@mui/material/Typography';
 
 // import PlaceForm from './PlaceForm'
 // import {Router,
@@ -42,6 +43,7 @@ const PlacesList = ({
 
   return (
     <div className="orders-page">
+   
       <Search onSearch={handleSearch} search={search} />
       <div className="card-container">
         {/* <PlaceForm addItem={addItem}/> */}

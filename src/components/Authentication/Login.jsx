@@ -2,6 +2,9 @@ import React from  'react';
 import { useState, useEffect } from 'react'
 import { baseUrl, headers } from '../../Globals'
 import { useNavigate } from 'react-router-dom'
+import "./Login.css"
+import { Typography, Button } from '@mui/material';
+import SendIcon from '@mui/icons-material/Send';
 
 const Login = ( {loginUser, loggedIn}) => {
     const [username, setUsername] = useState('')
@@ -37,15 +40,15 @@ const Login = ( {loginUser, loggedIn}) => {
 
       return(
 
-    <div>
-            <h2>Login</h2>
+    <div className="container">
+            <h2 className="title">Login</h2>
             <form onSubmit={ handleSubmit } >
             <label>Username</label>
-                <div><input type="text" name="" id="" value={ username } onChange= { e => setUsername(e.target.value) }/></div>
+                <input type="text" name="" id="" value={ username } onChange= { e => setUsername(e.target.value) }/>
                 <label>Password</label>
-                <div><input type="password" name="" id="" value={ password } onChange= { e => setPassword(e.target.value) }/></div>
-
-                <input type="submit" value="Login" />
+                <input type="password" name="" id="" value={ password } onChange= { e => setPassword(e.target.value) }/>
+                <Button variant="contained" endIcon={<SendIcon/>}onClick= { handleSubmit } type="submit" value="Login">Login</Button>
+                {/* <input type="submit" value="Login" /> */}
             </form>
         </div>
       )

@@ -1,12 +1,19 @@
 .App {
   text-align: center;
-  background-color: #808286;
+  background-color: #515357;
 }
 
 .form {
-  height: 100%;
+  /* margin-top: 20;
+  margin-bottom: 20;
+  display: 'block' */
   width: 100%;
-  display: flex;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 
 /* .orders-page{
@@ -24,9 +31,9 @@
   background: #1C6EA4; }
   .myButton:active {
   background: #144E75; }
-
+/* 
   .button {
-    background-color: #4CAF50; /* Green */
+    background-color: #4CAF50; 
     border: none;
     color: white;
     padding: 15px 32px;
@@ -34,7 +41,7 @@
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-  }
+  } */
 
 /* .App-header {
   background-color: #282c34;
@@ -68,15 +75,12 @@
   /* align-items: center; */
 }
 
-form {
-  height: 50px;
-  width: 100%;
-  padding: 50px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  background-color:  rgb(65, 64, 64);
-  color: white;
+.form {
+ margin-top: 20;
+ margin-bottom: 20;
+ display: 'block'
+
+ 
 }
 
 .submit-bttn {
@@ -90,8 +94,8 @@ height: 10 px;
 }
 
 .search{
-  background-color: #282c34;
-  height: 1vh;
+
+  height: 10vh;
   display: flex;
   flex-direction: column;
   /* align-items: center;
@@ -101,7 +105,7 @@ height: 10 px;
   color: white; */
 }
 
-.Navbar{
+/* .Navbar{
   background-color: #282c34;
   height: 10vh;
   padding: 10;
@@ -110,7 +114,7 @@ height: 10 px;
   font-size: calc(15px + 3vmin);
   padding-left: 50px;
 
-}
+} */
 
 
 

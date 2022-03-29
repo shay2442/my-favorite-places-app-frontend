@@ -1,9 +1,16 @@
 
 import {useState, useEffect} from 'react'
 import { baseUrl, headers, getToken } from '../../Globals'
-import {Button, Form, Container} from 'react-bootstrap'
+// import {Button, Form, Container} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { useParams, useNavigate } from 'react-router-dom'
+import styled from 'styled-components'
+import {  TextField, Container } from '@mui/material';
+
+
+// const Form = styled.form`
+// width: 100%;
+// `;
 
 
 
@@ -11,6 +18,7 @@ const PlaceForm = ({addItem, places, updateItem}) => {
     const params = useParams()
     
 
+   
     const initialState={ 
         image: '',
         name: '',
@@ -91,41 +99,41 @@ const PlaceForm = ({addItem, places, updateItem}) => {
 
 
     return(
-        <div className='form'>
-             <form onSubmit={handleSubmit}className="form">
-            <label>
-                Image:
-                <input className='input'
+        <Container     display='flex'
+        flexDirection='row'
+        justifyContent='center'>
+             <form fullWidth={true} margin="normal" onSubmit={handleSubmit}>
+             <TextField
+                
+                label="Image"
+                
+                fullWidth
                 type="text"
                 name="image"
                 value={formData.image}
-                onChange={handleChange}>
-                </input>
-            </label>
+                onChange={handleChange}/>
 
-            <label>
-                Name:
-                <input className='input'
+                <TextField
+                label="Name"
+                
+                fullWidth
                 type="text"
                 name="name"
                 value={formData.name}
-                onChange={handleChange}
-                ></input>
-            </label>
+                onChange={handleChange}/>
 
-            <label>
-                Address:
-                <input className='input'
+                <TextField
+               
+                label="Address"
                 type="text"
                 name="address"
                 value={formData.address}
-                onChange={handleChange}
-                ></input>
-            </label>
+                onChange={handleChange}/>           
+                
             <label>
                 Price:
                 <select
-            name="category"
+            name="price"
             value={formData.category}
             onChange={handleChange}
             >
@@ -133,29 +141,35 @@ const PlaceForm = ({addItem, places, updateItem}) => {
                 <option value='$$'>$$</option>
                 <option value='$$$'>$$$</option>
                     </select></label>
-            <label>
-                Category:
-                <input className='input'
+
+                <TextField
+                
+                label="category"
+                
+                fullWidth
                 type="text"
                 name="category"
                 value={formData.category}
-                onChange={handleChange}
-                ></input>
-            </label>
-            <label>
-                Notes:
-                <input className='input'
+                onChange={handleChange}/>
+
+                <TextField
+                
+                label="Notes"
+                
+                fullWidth
+                multiline
+                rows={4}
                 type="text"
                 name="notes"
                 value={formData.notes}
-                onChange={handleChange}
-                ></input>
-            </label>
+                onChange={handleChange}/>
+           
            
 
             <button className='submit-bttn' type="submit">Add Place</button>
+            
         </form>
-        </div>
+        </Container>
     )
 }
 

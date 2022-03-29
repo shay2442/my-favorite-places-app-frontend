@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import {Link } from 'react-router-dom'
 import {headers, getToken} from '../../Globals'
 import styled from 'styled-components'
+import { ButtonGroup, Icon } from '@mui/material';
 
 const PlaceCard = ({ place, handleDelete, updatePlace }) => {
     const navigate = useNavigate()
@@ -36,13 +37,12 @@ const PlaceCard = ({ place, handleDelete, updatePlace }) => {
         <div className="card">
         <img className='image' src={place.image} alt="No Pic"/>
             <div> Name:{place.name}</div>
+            <ButtonGroup orientation='vertical' variant='contained'>
+
             <button onClick={ () => navigate(`/places/${place.id}`)}>View Notes</button>
             <button onClick={ () => navigate(`/places/${place.id}/edit`)}>Edit</button>
-            {/* <div> Address:{place.address}</div>
-            <div> Price:{place.price}</div>
-            <div> Category:{place.category}</div>
-            <div> Notes:{place.notes}</div> */} 
             <button onClick={() => handleDelete(id)}>🗑 Delete Place</button>
+            </ButtonGroup>
             {/* <Link to={`/places/${id}/edit`}><button>Edit</button></Link> */}
     
         </div>

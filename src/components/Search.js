@@ -1,8 +1,10 @@
 import {useState} from 'react'
-import { Button, Form, Container } from 'react-bootstrap'
+
 
 function Search({onSearch}) {
     const [currentSearch, setCurrentSearch] = useState('')
+
+  
 
     function handleSubmit(e) {
         e.preventDefault()
@@ -11,18 +13,20 @@ function Search({onSearch}) {
     }
 
     return(
-        <Container>
-        <Form onSubmit={handleSubmit} className='search'>
-        <Form.Group className="mb-3" controlId="searchForm">
-            <Form.Control
+        
+        <form onSubmit={handleSubmit} className='search'>
+        {/* <TextField className={classes.field} label="Search Places" variant="outlined" color="primary" size="large"  */}
+         
+            <input
             type="text"
             name="search"
-            placeholder="Search places"
+            placeholder="Search places..."
             value={currentSearch}
-            onChange={(e) => setCurrentSearch(e.target.value)}></Form.Control>
-            </Form.Group>
-        </Form>
-        </Container>
+            onChange={(e) => setCurrentSearch(e.target.value)}></input>
+       {/* /> */}
+        
+        </form>
+
     )
 }
 
