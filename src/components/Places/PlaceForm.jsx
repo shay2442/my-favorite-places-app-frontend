@@ -8,9 +8,6 @@ import styled from 'styled-components'
 import {  TextField, Container } from '@mui/material';
 
 
-// const Form = styled.form`
-// width: 100%;
-// `;
 
 
 
@@ -99,10 +96,8 @@ const PlaceForm = ({addItem, places, updateItem}) => {
 
 
     return(
-        <Container     display='flex'
-        flexDirection='row'
-        justifyContent='center'>
-             <form fullWidth={true} margin="normal" onSubmit={handleSubmit}>
+        <Container display='flex'>
+             <form margin="normal" onSubmit={handleSubmit}>
              <TextField
                 
                 label="Image"
@@ -166,7 +161,7 @@ const PlaceForm = ({addItem, places, updateItem}) => {
            
            
 
-            <button className='submit-bttn' type="submit">Add Place</button>
+           <input type="submit" value={formData.id ? "Update" : "Create"}/>
             
         </form>
         </Container>
