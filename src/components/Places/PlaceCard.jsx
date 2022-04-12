@@ -9,26 +9,29 @@ const PlaceCard = ({ place, handleDelete, updatePlace }) => {
     const {id, image, name, address, price, category, notes} = place
     
 
-    function updatePlace(e){
+    // function updatePlace(e){
         
-        const configObj = {
-            method: "PATCH",
-            headers: {
-                ...headers,
-                ...getToken()
-              },
-            body: JSON.stringify({})
-        }
-        fetch(`http://localhost:3001/places/${id}`, configObj)
-        .then(r => r.json())
-        .then(data => {
+    //     const configObj = {
+    //         method: "PATCH",
+    //         headers: {
+    //             ...headers,
+    //             ...getToken()
+    //           },
+    //         body: JSON.stringify({})
+    //     }
+    //     fetch(`http://localhost:3001/places/${id}`, configObj)
+    //     .then(r => r.json())
+    //     .then(data => {
 
-            console.log(data)
-            updatePlace(data)
-        })
+    //         console.log(data)
+    //         updatePlace(data)
+    //         navigate('/places')
+            
+    //     })
         // change state 
         // change db 
-    }
+      
+    // }
 
     
 

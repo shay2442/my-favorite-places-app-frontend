@@ -15,7 +15,42 @@
   border-radius: 4px;
   box-sizing: border-box;
 }
+.sulogin {
+  text-align: center;
+  font-family: 'Oswald', Helvetica, sans-serif;
+  font-size: 80px;
+  /* transform: skewY(-10deg); */
+  letter-spacing: 4px;
+  word-spacing: -8px;
+  color: rgb(240, 228, 224);
+  text-shadow: 
+    -1px -1px 0 rgb(105, 86, 86),
+    -2px -2px 0 rgb(202, 184, 184),
+    -3px -3px 0 rgb(175, 163, 163),
+    -4px -4px 0 rgb(189, 180, 180),
+    -5px -5px 0 rgb(219, 210, 210),
+    -6px -6px 0 rgb(167, 154, 154),
+    -7px -7px 0 rgb(224, 211, 211),
+    -8px -8px 0 rgb(218, 202, 202),
+    -30px 20px 40px dimgrey
+}
 
+.body{
+  background: radial-gradient(600px at 50% 50% , #615555 20%, #000 100%);
+}
+
+.h3 {
+  color: rgb(211, 200, 197);
+  font-family: "Monaco", "Courier New", monospace;
+}
+
+.link{
+  background-color: #515357;
+  font-size: 40px;
+  color: rgb(71, 181, 255);
+  text-orientation: upright;
+
+}
 /* .orders-page{
   background: url(https://cdn.luxe.digital/media/2020/05/07203610/best-coffee-beans-luxe-digital.jpg) no-repeat center center fixed; 
   -webkit-background-size: cover;

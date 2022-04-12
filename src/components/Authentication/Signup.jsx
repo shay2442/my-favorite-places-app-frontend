@@ -34,7 +34,7 @@ const Signup = ({ loginUser, loggedIn }) => {
     fetch(baseUrl + "/users", {
       method: "POST",
       headers,
-      body: JSON.stringify(),
+      body: JSON.stringify(strongParams),
     })
       // .then(checkStatus)
       .then((r) => {

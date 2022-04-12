@@ -5,17 +5,21 @@ import { Link } from "react-router-dom";
 const Navigation = ({ loggedIn, logoutUser, currentUser }) => {
   const loggedOutLinks = () => {
     return (
+      <div className="body">
+      <h1 className="sulogin">My Favorite Places</h1>
+      <h3 className="h3"> A place for you to save all of your favorite places and remember what you liked about them. Enjoy!</h3>
+      
+      <br></br>
       <ul>
+        
         <li>
-          <Link to="/">Homepage</Link>
+          <Link className="link" to="/signup">Signup </Link>
         </li>
         <li>
-          <Link to="/signup">Signup</Link>
-        </li>
-        <li>
-          <Link to="/login">Login</Link>
+          <Link className="link" to="/login">Login</Link>
         </li>
       </ul>
+      </div>
     );
   };
 

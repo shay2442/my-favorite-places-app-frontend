@@ -13,7 +13,7 @@ import {  TextField, Container } from '@mui/material';
 
 const PlaceForm = ({addItem, places, updateItem}) => {
     const params = useParams()
-    
+    const URL = 'http://localhost:3001/places'
 
    
     const initialState={ 
@@ -52,7 +52,7 @@ const PlaceForm = ({addItem, places, updateItem}) => {
             "Content-Type": "application/json",
             "Authorization": `Bearer ${ localStorage.getItem('jwt') }`
           }
-        fetch(`http://localhost:3001/places`,{
+        fetch( URL ,{
             method: "POST",
             headers,
             body: JSON.stringify(formData),
@@ -70,7 +70,7 @@ const PlaceForm = ({addItem, places, updateItem}) => {
             "Content-Type": "application/json",
             "Authorization": `Bearer ${ localStorage.getItem('jwt') }`
           }
-        fetch(`http://localhost:3001/places/${id}`,{
+        fetch(URL + `/${id}`,{
             method: "PATCH",
             headers,
             body: JSON.stringify(formData),
@@ -79,6 +79,7 @@ const PlaceForm = ({addItem, places, updateItem}) => {
         .then((updatedItem) => {
             updateItem(updatedItem)
             setFormData(initialState)
+            navigate('/places')
         })
 
     }

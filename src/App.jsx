@@ -79,6 +79,7 @@ function App() {
     })
 
     setPlaces(newPlaces)
+    
   }
 
   function handleDelete(id) {
