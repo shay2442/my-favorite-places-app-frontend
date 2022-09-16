@@ -1,9 +1,8 @@
 import React from  'react';
 import { useState, useEffect } from 'react'
 import { baseUrl, headers } from '../../Globals'
-import { useNavigate } from 'react-router-dom'
-import { Typography, Button } from '@mui/material';
-import SendIcon from '@mui/icons-material/Send';
+import { useNavigate, Navigate } from 'react-router-dom'
+
 
 const Login = ( {loginUser, loggedIn}) => {
     const [username, setUsername] = useState('')
@@ -40,13 +39,17 @@ const Login = ( {loginUser, loggedIn}) => {
             }else {
               resp.json().then((errors) => {
                 console.log(errors.error)
-                console.log(errors)
+                alert("Invalid username or password")
                 setErrors(errors)
                 
               })
             }
           })
         }
+
+        // if (user) {
+        //   return <Navigate to="/rooms"/>
+        // }
 
       return(
 
@@ -55,10 +58,10 @@ const Login = ( {loginUser, loggedIn}) => {
             <h3> {errors.error} </h3>
             <form onSubmit={ handleSubmit } >
             <label>Username</label>
-                <input type="text" name="" id="" value={ username } onChange= { e => setUsername(e.target.value) }/>
+                <input type="text" name="" id="" placeholder="username" value={ username } onChange= { e => setUsername(e.target.value) }/>
                 <label>Password</label>
-                <input type="password" name="" id="" value={ password } onChange= { e => setPassword(e.target.value) }/>
-                <Button variant="contained" endIcon={<SendIcon/>}onClick= { handleSubmit } type="submit" value="Login">Login</Button>
+                <input type="password" name="" id="" placeholder="password" value={ password } onChange= { e => setPassword(e.target.value) }/>
+                <button className="button" onClick= { handleSubmit } type="submit" value="Login">Login</button>
                 {/* <input type="submit" value="Login" /> */}
                
             </form>

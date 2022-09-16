@@ -106,7 +106,7 @@ const PlaceForm = ({addItem, places, updateItem}) => {
                 fullWidth
                 type="text"
                 name="image"
-                value={formData.image}
+                value={formData?.image}
                 onChange={handleChange}/>
 
                 <TextField

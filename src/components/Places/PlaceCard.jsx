@@ -39,7 +39,7 @@ const PlaceCard = ({ place, handleDelete, updatePlace }) => {
         <RecipeWrapper>
         <div className="card">
         <img className='image' src={place.image} alt="No Pic"/>
-            <div> Name:{place.name}</div>
+            <div><strong>Name:  {place.name}</strong></div>
             <ButtonGroup orientation='vertical' variant='contained'>
 
             <button onClick={ () => navigate(`/places/${place.id}`)}>View Notes</button>

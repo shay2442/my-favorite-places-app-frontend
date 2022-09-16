@@ -100,7 +100,7 @@ function App() {
 
   return (
     
-    <div  >
+    <div className='app' >
 
       {/* <header className="App-header">
         My Favorite Places App
